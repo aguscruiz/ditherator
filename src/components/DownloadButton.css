@@ -8,8 +8,8 @@
   background: var(--accent);
   border: none;
   border-radius: 10px;
-  color: var(--bg-primary);
-  font-family: var(--font-mono);
+  color: var(--text-white);
+  font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -19,7 +19,7 @@
 .download-button:hover:not(.disabled) {
   background: var(--accent-dim);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
+  box-shadow: 0 4px 12px rgba(255, 79, 0, 0.3);
 }
 
 .download-button:active:not(.disabled) {

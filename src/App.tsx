@@ -110,7 +110,7 @@ function App() {
 
       <footer className="footer">
         <p>
-          Made with <span className="heart">♥</span> for pixel art enthusiasts
+          Made with <span className="heart">♥</span> by <a href="https://github.com/aguscruiz" target="_blank" rel="noopener noreferrer">Agustin Ruiz</a>
         </p>
       </footer>
     </div>

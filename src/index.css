@@ -11,8 +11,8 @@
   --border-color: #2a2a2a;
   --text-primary: #e8e8e8;
   --text-secondary: #888;
-  --accent: #00ff88;
-  --accent-dim: #00cc6a;
+  --accent: #ff4f00;
+  --accent-dim: #cc3f00;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -26,6 +26,16 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.5;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+a:hover {
+  opacity: 0.8;
 }
 
 /* Subtle dot pattern background */

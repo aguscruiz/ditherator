@@ -15,7 +15,7 @@ interface DitherControlsProps {
   disabled: boolean;
 }
 
-const ALGORITHMS: DitherAlgorithm[] = ['ordered', 'floyd-steinberg', 'atkinson', 'stucki', 'horizontal-line'];
+const ALGORITHMS: DitherAlgorithm[] = ['ordered', 'horizontal-line'];
 
 export const DitherControls = ({
   algorithm,

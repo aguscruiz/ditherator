@@ -1,4 +1,4 @@
-export type DitherAlgorithm = 'floyd-steinberg' | 'atkinson' | 'ordered' | 'stucki' | 'horizontal-line';
+export type DitherAlgorithm = 'ordered' | 'horizontal-line';
 
 export interface DitherOptions {
   threshold: number; // 0-255

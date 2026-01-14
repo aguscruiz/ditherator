@@ -10,14 +10,14 @@ import { DitherFunction } from './types';
  * This produces a newspaper/print halftone look with varied textures.
  */
 
-// 4x4 hybrid matrix: scattered dots in lights, horizontal lines in darks
-// Light areas trigger high thresholds first -> scattered dots (alternating 255s)
-// Dark areas fill in low thresholds -> continuous horizontal lines
+// 4x4 hybrid matrix: 1px horizontal lines with gaps
+// Alternating rows ensure lines are always 1px tall
+// Even rows = line thresholds, Odd rows = gaps (255)
 export const DEFAULT_HORIZONTAL_MATRIX = [
-  [192, 176, 184, 168],  // Row 0 - lightest, solid line
-  [144, 128, 136, 120],  // Row 1 - light, solid line
-  [ 96,  80,  88, 255],  // Row 2 - mid, line with gap for dots
-  [ 48,  32,  40,  24],  // Row 3 - darkest, solid line
+  [160, 144, 152, 136],  // Row 0 - line (light areas)
+  [255, 255, 255, 255],  // Row 1 - gap (always empty)
+  [ 64,  48,  56,  40],  // Row 2 - line (dark areas)
+  [255, 255, 255, 255],  // Row 3 - gap (always empty)
 ];
 
 // Current matrix state (can be modified by MatrixEditor)

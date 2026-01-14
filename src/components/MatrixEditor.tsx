@@ -78,10 +78,10 @@ export const MatrixEditor = ({ matrix, onChange }: MatrixEditorProps) => {
 
   const resetToDefault = () => {
     const defaultMatrix = [
-      [160, 144, 152, 136],  // Row 0 - line (light areas)
-      [255, 255, 255, 255],  // Row 1 - gap (always empty)
-      [ 64,  48,  56,  40],  // Row 2 - line (dark areas)
-      [255, 255, 255, 255],  // Row 3 - gap (always empty)
+      [156, 164, 172, 180],  // Row 0 - all lines
+      [108, 116, 124, 132],  // Row 1 - all lines
+      [ 60,  68,  76, 255],  // Row 2 - lines + gap at end
+      [ 12,  20,  28,  36],  // Row 3 - all lines
     ];
     setLocalMatrix(defaultMatrix);
   };

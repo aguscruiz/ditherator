@@ -9,7 +9,7 @@ function App() {
   const [dithered, setDithered] = useState<boolean[] | null>(null);
   const [algorithm, setAlgorithm] = useState<DitherAlgorithm>('ordered');
   const [threshold, setThreshold] = useState(200);
-  const [scale, setScale] = useState(13);
+  const [scale, setScale] = useState(1);
   const [foregroundColor, setForegroundColor] = useState('#ffffff');
   const [backgroundColor, setBackgroundColor] = useState('#000000');
   const [sourceImage, setSourceImage] = useState<HTMLImageElement | null>(null);
@@ -24,7 +24,7 @@ function App() {
       
       const processed = processImage(img, scale);
       setProcessedImage(processed);
-    } catch (error) {
+    } catch (error) {image.png
       console.error('Error loading image:', error);
     }
   }, [scale]);

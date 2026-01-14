@@ -10,19 +10,26 @@ import { DitherFunction } from './types';
  * This produces a newspaper/print halftone look with varied textures.
  */
 
-// 8x8 hybrid matrix: scattered dots in lights, horizontal lines in darks
+// 4x4 hybrid matrix: scattered dots in lights, horizontal lines in darks
 // Light areas trigger high thresholds first -> scattered dots (alternating 255s)
 // Dark areas fill in low thresholds -> continuous horizontal lines
-const HORIZONTAL_8X8 = [
-  [255, 200, 255, 208, 255, 204, 255, 196],  // Row 0 - lightest, first dots appear
-  [176, 255, 184, 255, 188, 255, 180, 255],  // Row 1 - light, more dots
-  [255, 152, 255, 160, 255, 156, 255, 148],  // Row 2 - light-mid, dots
-  [128, 255, 136, 255, 140, 255, 132, 255],  // Row 3 - mid, dots starting to connect
-  [104, 106, 108, 110, 110, 108, 106, 104],  // Row 4 - mid-dark, forming lines
-  [ 78,  80,  82,  84,  84,  82,  80,  78],  // Row 5 - dark, solid line
-  [ 52,  54,  56,  58,  58,  56,  54,  52],  // Row 6 - darker, solid line
-  [ 26,  28,  30,  32,  32,  30,  28,  26],  // Row 7 - darkest, solid line
+export const DEFAULT_HORIZONTAL_MATRIX = [
+  [192, 176, 184, 168],  // Row 0 - lightest, solid line
+  [144, 128, 136, 120],  // Row 1 - light, solid line
+  [ 96,  80,  88, 255],  // Row 2 - mid, line with gap for dots
+  [ 48,  32,  40,  24],  // Row 3 - darkest, solid line
 ];
+
+// Current matrix state (can be modified by MatrixEditor)
+let currentMatrix = DEFAULT_HORIZONTAL_MATRIX.map(row => [...row]);
+
+export const setHorizontalMatrix = (matrix: number[][]) => {
+  currentMatrix = matrix.map(row => [...row]);
+};
+
+export const getHorizontalMatrix = () => {
+  return currentMatrix.map(row => [...row]);
+};
 
 export const horizontalLine: DitherFunction = (
   grayscale: number[],
@@ -42,7 +49,7 @@ export const horizontalLine: DitherFunction = (
       const pixel = grayscale[idx];
       
       // Get matrix value - rows have similar values = horizontal lines
-      const matrixValue = HORIZONTAL_8X8[y % 8][x % 8];
+      const matrixValue = currentMatrix[y % 4][x % 4];
       
       // Pixel is "on" (foreground) if grayscale > adjusted threshold
       const adjustedThreshold = matrixValue + thresholdOffset;

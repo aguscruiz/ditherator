@@ -1,0 +1,142 @@
+.matrix-editor-inline {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.matrix-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.matrix-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.reset-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.reset-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.matrix-grid-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.matrix-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.matrix-row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.matrix-cell {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.1s;
+  user-select: none;
+}
+
+.matrix-cell:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.matrix-cell.filled {
+  background: var(--accent);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.matrix-cell.gap {
+  background: var(--bg-tertiary);
+  border: 1px dashed var(--border-color);
+}
+
+.row-btns {
+  display: flex;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.row-btns button {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.row-btns button:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.matrix-legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+.matrix-legend span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.matrix-legend .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.matrix-legend .dot.filled {
+  background: var(--accent);
+}
+
+.matrix-legend .dot.gap {
+  background: var(--bg-tertiary);
+  border: 1px dashed var(--border-color);
+}

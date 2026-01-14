@@ -31,7 +31,7 @@ export const DitherControls = ({
   disabled,
 }: DitherControlsProps) => {
   return (
-    <div className={`dither-controls ${disabled ? 'disabled' : ''}`}>
+    <div className="dither-controls">
       <div className="control-group">
         <label className="control-label">Algorithm</label>
         <div className="algorithm-grid">
@@ -40,7 +40,6 @@ export const DitherControls = ({
               key={algo}
               className={`algorithm-button ${algorithm === algo ? 'active' : ''}`}
               onClick={() => onAlgorithmChange(algo)}
-              disabled={disabled}
               title={algorithmDescriptions[algo]}
             >
               {algorithmNames[algo]}

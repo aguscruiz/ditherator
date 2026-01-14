@@ -2,10 +2,10 @@ import { floydSteinberg } from './floydSteinberg';
 import { atkinson } from './atkinson';
 import { ordered } from './ordered';
 import { stucki } from './stucki';
-import { horizontalLine } from './horizontalLine';
+import { horizontalLine, setHorizontalMatrix, getHorizontalMatrix, DEFAULT_HORIZONTAL_MATRIX } from './horizontalLine';
 import { DitherAlgorithm, DitherFunction } from './types';
 
-export { floydSteinberg, atkinson, ordered, stucki, horizontalLine };
+export { floydSteinberg, atkinson, ordered, stucki, horizontalLine, setHorizontalMatrix, getHorizontalMatrix, DEFAULT_HORIZONTAL_MATRIX };
 export type { DitherAlgorithm, DitherFunction, DitherOptions } from './types';
 
 export const algorithms: Record<DitherAlgorithm, DitherFunction> = {

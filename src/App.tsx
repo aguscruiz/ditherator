@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
-import { ImageUploader, DitherControls, PreviewCanvas, DownloadButton } from './components';
+import { ImageUploader, DitherControls, PreviewCanvas, DownloadButton, MatrixEditor } from './components';
 import { loadImage, processImage, ProcessedImage } from './utils/imageProcessor';
-import { algorithms, DitherAlgorithm } from './algorithms';
+import { algorithms, DitherAlgorithm, setHorizontalMatrix, getHorizontalMatrix } from './algorithms';
 import './App.css';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
   const [backgroundColor, setBackgroundColor] = useState('#000000');
   const [sourceImage, setSourceImage] = useState<HTMLImageElement | null>(null);
   const [filename, setFilename] = useState('dithered.svg');
+  const [matrixVersion, setMatrixVersion] = useState(0);
 
   // Process uploaded image
   const handleImageLoad = useCallback(async (file: File) => {
@@ -24,7 +25,7 @@ function App() {
       
       const processed = processImage(img, scale);
       setProcessedImage(processed);
-    } catch (error) {image.png
+    } catch (error) {
       console.error('Error loading image:', error);
     }
   }, [scale]);
@@ -52,7 +53,13 @@ function App() {
       threshold
     );
     setDithered(result);
-  }, [processedImage, algorithm, threshold]);
+  }, [processedImage, algorithm, threshold, matrixVersion]);
+
+  // Handle matrix changes
+  const handleMatrixChange = useCallback((matrix: number[][]) => {
+    setHorizontalMatrix(matrix);
+    setMatrixVersion(v => v + 1);
+  }, []);
 
   return (
     <div className="app">
@@ -84,6 +91,13 @@ function App() {
             onBackgroundColorChange={setBackgroundColor}
             disabled={!processedImage}
           />
+
+          {algorithm === 'horizontal-line' && (
+            <MatrixEditor
+              matrix={getHorizontalMatrix()}
+              onChange={handleMatrixChange}
+            />
+          )}
 
           <DownloadButton
             dithered={dithered}

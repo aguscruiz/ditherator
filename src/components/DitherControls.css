@@ -4,11 +4,6 @@
   gap: 24px;
 }
 
-.dither-controls.disabled {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
 .control-group {
   display: flex;
   flex-direction: column;
@@ -173,4 +168,30 @@
   background: var(--bg-tertiary);
   color: var(--text-primary);
   border-color: var(--text-secondary);
+}
+
+.edit-matrix-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--bg-tertiary);
+  border: 1px dashed var(--accent);
+  border-radius: 8px;
+  padding: 10px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-top: 8px;
+}
+
+.edit-matrix-button:hover {
+  background: rgba(224, 124, 62, 0.1);
+  border-style: solid;
+}
+
+.edit-matrix-button svg {
+  opacity: 0.8;
 }

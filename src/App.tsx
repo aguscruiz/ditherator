@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   const [processedImage, setProcessedImage] = useState<ProcessedImage | null>(null);
   const [dithered, setDithered] = useState<boolean[] | null>(null);
-  const [algorithm, setAlgorithm] = useState<DitherAlgorithm>('ordered');
+  const [algorithm, setAlgorithm] = useState<DitherAlgorithm>('horizontal-line');
   const [threshold, setThreshold] = useState(200);
   const [scale, setScale] = useState(1);
   const [foregroundColor, setForegroundColor] = useState('#ffffff');

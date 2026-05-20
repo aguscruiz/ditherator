@@ -10,13 +10,12 @@ import { DitherFunction } from './types';
  * This produces a newspaper/print halftone look with varied textures.
  */
 
-// 4x4 hybrid matrix: horizontal lines with one gap
-// All rows are lines except position [2,3] which is a gap
+// 4x4 hybrid matrix: alternating row, solid lines, blank row
 export const DEFAULT_HORIZONTAL_MATRIX = [
-  [156, 164, 172, 180],  // Row 0 - all lines
+  [255, 164, 255, 180],  // Row 0 - gap, line, gap, line
   [108, 116, 124, 132],  // Row 1 - all lines
-  [ 60,  68,  76, 255],  // Row 2 - lines + gap at end
-  [ 12,  20,  28,  36],  // Row 3 - all lines
+  [ 60,  68,  76,  84],  // Row 2 - all lines
+  [255, 255, 255, 255],  // Row 3 - all gaps
 ];
 
 // Current matrix state (can be modified by MatrixEditor)

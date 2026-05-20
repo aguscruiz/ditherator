@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { DEFAULT_HORIZONTAL_MATRIX } from '../algorithms/horizontalLine';
 import './MatrixEditor.css';
 
 interface MatrixEditorProps {
@@ -77,13 +78,7 @@ export const MatrixEditor = ({ matrix, onChange }: MatrixEditorProps) => {
   };
 
   const resetToDefault = () => {
-    const defaultMatrix = [
-      [156, 164, 172, 180],  // Row 0 - all lines
-      [108, 116, 124, 132],  // Row 1 - all lines
-      [ 60,  68,  76, 255],  // Row 2 - lines + gap at end
-      [ 12,  20,  28,  36],  // Row 3 - all lines
-    ];
-    setLocalMatrix(defaultMatrix);
+    setLocalMatrix(DEFAULT_HORIZONTAL_MATRIX.map(row => [...row]));
   };
 
   return (
